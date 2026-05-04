@@ -1,0 +1,140 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* HERO */
+#hero {
+    background: url('banner.png') no-repeat center center;
+    background-size: cover;
+    height: 600px;
+    position: relative;
+}
+
+#hero::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+/* TEXT OVER HERO */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 90px;
+    color: #FF2D8D;
+    margin: 0;
+    text-shadow: 3px 3px #000;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+.btn {
+    background-color: #19D3D3;
+    color: #000;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #FF2D8D;
+    color: #fff;
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.btn.pink {
+    background-color: #FF2D8D;
+    color: #fff;
+}
+
+/* SECTIONS */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* ABOUT */
+.about .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.profile {
+    width: 220px;
+    border-radius: 50%;
+    border: 4px solid #FF2D8D;
+    box-shadow: 0 0 20px #FF2D8D;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* CARDS */
+.card {
+    background-color: #111;
+    padding: 25px;
+    border: 2px solid #19D3D3;
+    width: 200px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: rotate(-2deg) scale(1.05);
+    background-color: #1a1a1a;
+}
+
+/* PRODUCTS */
+.product {
+    background-color: #111;
+    padding: 25px;
+    border: 2px dashed #FF2D8D;
+    width: 200px;
+}
+
+/* CTA */
+.cta {
+    background-color: #2A2A2A;
+}
+
+/* FOOTER */
+#footer {
+    background-color: #000;
+    padding: 25px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* CHAOS DECOR (scribble effect) */
+.section::after {
+    content: "✦ ✖ ✧";
+    display: block;
+    color: #19D3D3;
+    margin-top: 20px;
+    opacity: 0.3;
+}
