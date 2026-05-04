@@ -5,6 +5,12 @@ body {
     background-color: #000;
     color: #fff;
 }
+/* HERO CLEAN (image only) */
+#hero {
+    background: url('banner.png') no-repeat center center;
+    background-size: cover;
+    height: 400px;
+}
 
 /* HERO */
 #hero {
@@ -22,13 +28,21 @@ body {
     background: rgba(0,0,0,0.4);
 }
 
-/* TEXT OVER HERO */
-.overlay {
-    position: absolute;
-    top: 50%;
-    left: 8%;
-    transform: translateY(-50%);
-    z-index: 2;
+/* TITLE BLOCK UNDER IMAGE */
+.title-block {
+    background-color: #000;
+    padding: 60px 20px;
+}
+
+.title-block h1 {
+    font-size: 80px;
+    color: #FF2D8D;
+    margin-bottom: 10px;
+}
+
+.title-block h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
 }
 
 h1 {
