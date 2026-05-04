@@ -44,7 +44,9 @@ body {
     font-size: 28px;
     margin-bottom: 25px;
 }
-
+.title-block {
+    border-top: 4px dashed #19D3D3;
+}
 h1 {
     font-family: 'Permanent Marker', cursive;
     font-size: 90px;
