@@ -38,6 +38,9 @@ body {
     position: relative;
     z-index: 2;
 }
+.title-block {
+    text-align: center;
+}
 .title-block h1 {
     display: inline-block;
     padding: 10px 20px;
@@ -62,7 +65,10 @@ body {
     position: relative;
     display: inline-block;
 }
-
+.scribble-title {
+    display: inline-block;
+    text-align: center;
+}
 /* SVG LINE */
 .scribble {
     width: 100%;
@@ -88,6 +94,11 @@ body {
     to {
         stroke-dashoffset: 0;
     }
+}
+.alt-line {
+    stroke: #FF2D8D; /* pink */
+    stroke-width: 2;
+    animation: drawScribble 2.5s ease forwards;
 }
 h1 {
     font-family: 'Permanent Marker', cursive;
