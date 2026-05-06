@@ -28,6 +28,14 @@ body {
     font-size: 24px;
     margin-bottom: 15px;
 }
+#hero-logo > * {
+    margin-bottom: 15px;
+}
+.tagline {
+    font-size: 22px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
 
 /* PAINT SPLATTER */
 #hero-logo::before {
@@ -67,13 +75,14 @@ body {
     stroke-linecap:round;
     stroke-dasharray:400;
     stroke-dashoffset:400;
-    animation:draw 1.8s ease forwards;
+    animation:none;
 }
 
 .alt-line {
     stroke:#FF2D8D;
     stroke-width:2;
     animation:draw 2.4s ease forwards;
+    padding: bottom 5px; ;
 }
 
 @keyframes draw {
@@ -103,7 +112,20 @@ h2 {
     background:#FF2D8D;
     transform:rotate(-2deg);
 }
+.btn {
+    display:inline-block;
+    padding:12px 24px;
+    background:#19D3D3;
+    color:#000;
+    text-decoration:none;
+    transition:0.2s;
+}
 
+.btn:hover {
+    background:#FF2D8D;
+    color:#fff;
+    transform:rotate(-2deg) scale(1.05);
+}
 /* SECTIONS */
 .section {
     padding:60px 20px;
