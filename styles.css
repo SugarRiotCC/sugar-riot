@@ -15,11 +15,17 @@ body {
 /* TITLE */
 .title-block {
     text-align:center;
-    padding:50px 20px;
-    border-top:3px dashed #19D3D3;
+     padding:60px 20px 40px;
+     border-top:3px dashed #19D3D3;
     position:relative;
 }
-
+.title-block h1 {
+    font-family:'Permanent Marker',cursive;
+    font-size:70px;
+    color:#FF2D8D;
+    margin:0;
+}
+}
 /* PAINT SPLATTER */
 .title-block::before {
     content:"";
@@ -52,7 +58,43 @@ h2 {
     stroke-dashoffset:400;
     animation:draw 2s forwards;
 }
+.scribble-title {
+    display:inline-block;
+    text-align:center;
+}
 
+.scribble {
+    display:block;
+    margin:5px auto 0;
+    width:100%;
+    max-width:300px;
+}
+
+/* MAIN LINE */
+.scribble path {
+    fill:none;
+    stroke:#19D3D3;
+    stroke-width:4;
+    stroke-linecap:round;
+
+    stroke-dasharray:400;
+    stroke-dashoffset:400;
+    animation:draw 1.8s ease forwards;
+}
+
+/* SECOND LINE */
+.alt-line {
+    stroke:#FF2D8D;
+    stroke-width:2;
+    animation:draw 2.4s ease forwards;
+}
+
+@keyframes draw {
+    to { stroke-dashoffset:0; }
+}
+.scribble {
+    transform: rotate(-1deg);
+}
 .alt-line {
     stroke:#FF2D8D;
 }
@@ -139,14 +181,7 @@ h2 {
     }
 }
 
-/* THREAD */
-#thread-canvas {
-    position:fixed;
-    top:0;
-    left:0;
-    pointer-events:none;
-    z-index:999;
-}
+
 
 /* FOOTER */
 #footer {

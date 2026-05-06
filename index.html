@@ -14,7 +14,6 @@
 <body>
 
 <!-- THREAD CANVAS -->
-<canvas id="thread-canvas"></canvas>
 
 <!-- CRUMB BURST -->
 <div id="crumb-burst"></div>
@@ -147,42 +146,5 @@ document.addEventListener("click", e => {
     }
 });
 
-/* THREAD CURSOR */
-const canvas = document.getElementById("thread-canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let points=[];
-
-window.addEventListener("mousemove",e=>{
-    points.push({x:e.clientX,y:e.clientY});
-    if(points.length>15) points.shift();
-});
-
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    ctx.beginPath();
-    points.forEach((p,i)=>{
-        if(i===0) ctx.moveTo(p.x,p.y);
-        else ctx.lineTo(p.x,p.y);
-    });
-
-    let grad = ctx.createLinearGradient(0,0,canvas.width,0);
-    grad.addColorStop(0,"#19D3D3");
-    grad.addColorStop(1,"#FF2D8D");
-
-    ctx.strokeStyle=grad;
-    ctx.lineWidth=2;
-    ctx.stroke();
-
-    requestAnimationFrame(draw);
-}
-draw();
-
-</script>
-
-</body>
+body>
 </html>
