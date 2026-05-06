@@ -82,7 +82,7 @@ body {
     stroke:#FF2D8D;
     stroke-width:2;
     animation:draw 2.4s ease forwards;
-    padding: bottom 5px; ;
+    padding: bottom 5px;
 }
 
 @keyframes draw {
@@ -103,6 +103,7 @@ h2 {
 /* BUTTON */
 .btn {
     padding:12px 24px;
+    margin-top: 10px;
     background:#19D3D3;
     color:#000;
     text-decoration:none;
