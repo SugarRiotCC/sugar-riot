@@ -199,11 +199,3 @@ h2 {
     opacity: 0.7;
 }
 
-/* CHAOS DECOR (scribble effect) */
-.section::after {
-    content: "✦ ✖ ✧";
-    display: block;
-    color: #19D3D3;
-    margin-top: 20px;
-    opacity: 0.3;
-}
