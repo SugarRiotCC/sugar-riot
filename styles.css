@@ -1,3 +1,4 @@
+/* BASE */
 body {
     margin:0;
     font-family:'Poppins',sans-serif;
@@ -6,8 +7,7 @@ body {
     cursor:url('needle.png'), auto;
 }
 
-/* HERO */
-/* LOGO HERO */
+/* HERO LOGO */
 #hero-logo {
     text-align: center;
     padding: 80px 20px;
@@ -15,7 +15,7 @@ body {
     background: #000;
 }
 
-/* LOGO IMAGE */
+/* LOGO */
 .logo {
     width: 280px;
     max-width: 80%;
@@ -28,6 +28,8 @@ body {
     font-size: 24px;
     margin-bottom: 15px;
 }
+
+/* PAINT SPLATTER */
 #hero-logo::before {
     content: "";
     position: absolute;
@@ -49,85 +51,25 @@ body {
     right: 5%;
     opacity: 0.25;
 }
+
+/* SCRIBBLE (ONLY DEFINED ONCE) */
 .scribble {
     display:block;
     margin:10px auto;
     max-width:300px;
+    transform: rotate(-1deg);
 }
 
-.scribble path {
-    fill:none;
-    stroke:#19D3D3;
-    stroke-width:4;
-    stroke-dasharray:400;
-    stroke-dashoffset:400;
-    animation:draw 2s forwards;
-}
-
-.alt-line {
-    stroke:#FF2D8D;
-    stroke-width:2;
-}
-
-@keyframes draw {
-    to { stroke-dashoffset:0; }
-}
-@media(max-width:768px){
-
-    .logo {
-        width: 200px;
-    }
-
-    #hero-logo {
-        padding: 60px 15px;
-    }
-
-}
-/* TEXT */
-h1 {
-    font-family:'Permanent Marker',cursive;
-    font-size:70px;
-    color:#FF2D8D;
-}
-
-h2 {
-    font-size:26px;
-}
-
-/* SCRIBBLE */
-.scribble path {
-    fill:none;
-    stroke:#19D3D3;
-    stroke-width:4;
-    stroke-dasharray:400;
-    stroke-dashoffset:400;
-    animation:draw 2s forwards;
-}
-.scribble-title {
-    display:inline-block;
-    text-align:center;
-}
-
-.scribble {
-    display:block;
-    margin:5px auto 0;
-    width:100%;
-    max-width:300px;
-}
-
-/* MAIN LINE */
 .scribble path {
     fill:none;
     stroke:#19D3D3;
     stroke-width:4;
     stroke-linecap:round;
-
     stroke-dasharray:400;
     stroke-dashoffset:400;
     animation:draw 1.8s ease forwards;
 }
 
-/* SECOND LINE */
 .alt-line {
     stroke:#FF2D8D;
     stroke-width:2;
@@ -137,15 +79,16 @@ h2 {
 @keyframes draw {
     to { stroke-dashoffset:0; }
 }
-.scribble {
-    transform: rotate(-1deg);
-}
-.alt-line {
-    stroke:#FF2D8D;
+
+/* TEXT */
+h1 {
+    font-family:'Permanent Marker',cursive;
+    font-size:70px;
+    color:#FF2D8D;
 }
 
-@keyframes draw {
-    to { stroke-dashoffset:0; }
+h2 {
+    font-size:26px;
 }
 
 /* BUTTON */
@@ -167,11 +110,13 @@ h2 {
     text-align:center;
 }
 
+/* SCROLL ANIMATION */
 .reveal {
     opacity:0;
     transform:translateY(40px);
     transition:0.8s;
 }
+
 .reveal.active {
     opacity:1;
     transform:none;
@@ -185,15 +130,12 @@ h2 {
     flex-wrap:wrap;
 }
 
+/* CARDS */
 .card, .product {
     background:#111;
     padding:20px;
     border:2px solid #19D3D3;
     width:200px;
-}
-
-.product button {
-    margin-top:10px;
 }
 
 /* ABOUT */
@@ -210,7 +152,7 @@ h2 {
     border:3px solid #FF2D8D;
 }
 
-/* CRUMBS */
+/* CRUMB BURST */
 .crumb {
     position:fixed;
     width:6px;
@@ -219,14 +161,13 @@ h2 {
     border-radius:50%;
     animation:crumb 0.8s forwards;
 }
+
 @keyframes crumb {
     to {
         transform:translate(var(--x),var(--y));
         opacity:0;
     }
 }
-
-
 
 /* FOOTER */
 #footer {
@@ -235,9 +176,32 @@ h2 {
     opacity:0.6;
 }
 
-/* MOBILE */
+/* MOBILE (ONE CLEAN BLOCK) */
 @media(max-width:768px){
-    h1 {font-size:40px;}
-    #hero {height:200px;}
-    .grid {flex-direction:column;align-items:center;}
+
+    #hero-logo {
+        padding: 60px 15px;
+    }
+
+    .logo {
+        width: 180px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .scribble {
+        max-width: 180px;
+    }
+
+    .grid {
+        flex-direction:column;
+        align-items:center;
+    }
+
 }
