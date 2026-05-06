@@ -7,37 +7,82 @@ body {
 }
 
 /* HERO */
-#hero {
-    height:350px;
-    background:url('banner.png') center/cover no-repeat;
+/* LOGO HERO */
+#hero-logo {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    background: #000;
 }
 
-/* TITLE */
-.title-block {
-    text-align:center;
-     padding:60px 20px 40px;
-     border-top:3px dashed #19D3D3;
-    position:relative;
-}
-.title-block h1 {
-    font-family:'Permanent Marker',cursive;
-    font-size:70px;
-    color:#FF2D8D;
-    margin:0;
-}
-}
-/* PAINT SPLATTER */
-.title-block::before {
-    content:"";
-    position:absolute;
-    width:200px;
-    height:200px;
-    background:url('splatter.png') no-repeat center/contain;
-    top:-50px;
-    left:10%;
-    opacity:0.3;
+/* LOGO IMAGE */
+.logo {
+    width: 280px;
+    max-width: 80%;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px #FF2D8D);
 }
 
+/* TAGLINE */
+#hero-logo h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+#hero-logo::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: url('splatter.png') no-repeat center/contain;
+    top: 10%;
+    left: 5%;
+    opacity: 0.25;
+}
+
+#hero-logo::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: url('splatter2.png') no-repeat center/contain;
+    bottom: 10%;
+    right: 5%;
+    opacity: 0.25;
+}
+.scribble {
+    display:block;
+    margin:10px auto;
+    max-width:300px;
+}
+
+.scribble path {
+    fill:none;
+    stroke:#19D3D3;
+    stroke-width:4;
+    stroke-dasharray:400;
+    stroke-dashoffset:400;
+    animation:draw 2s forwards;
+}
+
+.alt-line {
+    stroke:#FF2D8D;
+    stroke-width:2;
+}
+
+@keyframes draw {
+    to { stroke-dashoffset:0; }
+}
+@media(max-width:768px){
+
+    .logo {
+        width: 200px;
+    }
+
+    #hero-logo {
+        padding: 60px 15px;
+    }
+
+}
 /* TEXT */
 h1 {
     font-family:'Permanent Marker',cursive;
