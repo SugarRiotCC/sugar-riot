@@ -1,23 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Sugar Riot: Crumbs and Chaos</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+<title>Sugar Riot: Crumbs and Chaos</title>
 
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
+<!-- THREAD CANVAS -->
+<canvas id="thread-canvas"></canvas>
+
+<!-- CRUMB BURST -->
+<div id="crumb-burst"></div>
+
 <!-- HERO -->
 <div id="hero"></div>
 
-<div class="title-block">
+<!-- TITLE -->
+<div class="title-block reveal">
     <h1 class="scribble-title">
         SUGAR RIOT
         <svg class="scribble" viewBox="0 0 300 30">
@@ -29,12 +35,11 @@
     <h2>Crumbs and Chaos</h2>
     <a href="#shop" class="btn">SHOP THE CHAOS</a>
 </div>
-   
-</h1>
+
 <!-- ABOUT -->
-<div class="section about">
+<div class="section about reveal">
     <div class="content">
-        <img src="profile.png" alt="Creator" class="profile" />
+        <img src="profile.png" class="profile" />
         <div class="text">
             <p>I don’t do perfect.</p>
             <p>I do yarn tangles, flour explosions, and sawdust therapy.</p>
@@ -44,7 +49,7 @@
 </div>
 
 <!-- SERVICES -->
-<div class="section services">
+<div class="section services reveal">
     <h2>THE CHAOS</h2>
     <div class="grid">
         <div class="card">🧶 Crochet</div>
@@ -55,25 +60,129 @@
 </div>
 
 <!-- SHOP -->
-<div class="section shop" id="shop">
+<div class="section shop reveal" id="shop">
     <h2>SHOP</h2>
     <div class="grid">
-        <div class="product">Chaos Beanie</div>
-        <div class="product">Rebel Apron</div>
-        <div class="product">Sawdust Art</div>
+
+        <div class="product">
+            <h3>Chaos Beanie</h3>
+            <p>$15</p>
+            <button onclick="addToCart('Chaos Beanie',15)">Add</button>
+        </div>
+
+        <div class="product">
+            <h3>Rebel Apron</h3>
+            <p>$20</p>
+            <button onclick="addToCart('Rebel Apron',20)">Add</button>
+        </div>
+
+        <div class="product">
+            <h3>Sawdust Art</h3>
+            <p>$25</p>
+            <button onclick="addToCart('Sawdust Art',25)">Add</button>
+        </div>
+
     </div>
 </div>
 
-<!-- CTA -->
-<div class="section cta">
-    <h2>Learn the Chaos</h2>
-    <a href="#" class="btn pink">START CREATING</a>
+<!-- CART -->
+<div class="section cart reveal">
+    <h2>Your Chaos Cart</h2>
+    <ul id="cart-list"></ul>
+    <p id="total"></p>
+    <button class="btn pink">Checkout (Connect PayPal Later)</button>
 </div>
 
 <!-- FOOTER -->
 <div id="footer">
     <p>Sugar Riot © 2026</p>
 </div>
+
+<!-- JS -->
+<script>
+
+/* SCROLL REVEAL */
+window.addEventListener("scroll", () => {
+    document.querySelectorAll(".reveal").forEach(el => {
+        let top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+});
+
+/* CART */
+let cart = [];
+function addToCart(name, price){
+    cart.push({name, price});
+    renderCart();
+}
+
+function renderCart(){
+    let list = document.getElementById("cart-list");
+    let total = 0;
+    list.innerHTML = "";
+
+    cart.forEach(item=>{
+        total += item.price;
+        let li = document.createElement("li");
+        li.textContent = item.name + " - $" + item.price;
+        list.appendChild(li);
+    });
+
+    document.getElementById("total").textContent = "Total: $" + total;
+}
+
+/* CRUMB BURST */
+document.addEventListener("click", e => {
+    for(let i=0;i<8;i++){
+        let crumb = document.createElement("div");
+        crumb.className="crumb";
+        crumb.style.left=e.clientX+"px";
+        crumb.style.top=e.clientY+"px";
+        crumb.style.setProperty("--x",(Math.random()*100-50)+"px");
+        crumb.style.setProperty("--y",(Math.random()*100-50)+"px");
+        document.body.appendChild(crumb);
+        setTimeout(()=>crumb.remove(),800);
+    }
+});
+
+/* THREAD CURSOR */
+const canvas = document.getElementById("thread-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let points=[];
+
+window.addEventListener("mousemove",e=>{
+    points.push({x:e.clientX,y:e.clientY});
+    if(points.length>15) points.shift();
+});
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.beginPath();
+    points.forEach((p,i)=>{
+        if(i===0) ctx.moveTo(p.x,p.y);
+        else ctx.lineTo(p.x,p.y);
+    });
+
+    let grad = ctx.createLinearGradient(0,0,canvas.width,0);
+    grad.addColorStop(0,"#19D3D3");
+    grad.addColorStop(1,"#FF2D8D");
+
+    ctx.strokeStyle=grad;
+    ctx.lineWidth=2;
+    ctx.stroke();
+
+    requestAnimationFrame(draw);
+}
+draw();
+
+</script>
 
 </body>
 </html>
