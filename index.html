@@ -34,7 +34,7 @@
 <!-- ABOUT -->
 <div class="section about reveal">
     <div class="content">
-        <img src="profile.png" class="profile" />
+        <img src="profile.png" alt="Creator of Sugar Riot" class="profile" />
         <div class="text">
             <p>I don’t do perfect.</p>
             <p>I do yarn tangles, flour explosions, and sawdust therapy.</p>
@@ -97,6 +97,7 @@
 <script>
 
 /* SCROLL REVEAL */
+window.dispatchEvent(new Event("scroll"));
 window.addEventListener("scroll", () => {
     document.querySelectorAll(".reveal").forEach(el => {
         let top = el.getBoundingClientRect().top;
@@ -137,11 +138,16 @@ document.addEventListener("click", e => {
         crumb.style.top=e.clientY+"px";
         crumb.style.setProperty("--x",(Math.random()*100-50)+"px");
         crumb.style.setProperty("--y",(Math.random()*100-50)+"px");
-        document.body.appendChild(crumb);
+        document.getElementById("crumb-burst").appendChild(crumb);
         setTimeout(()=>crumb.remove(),800);
     }
 });
-
+document.querySelectorAll(".reveal").forEach(el => {
+    let path = el.querySelector("path");
+    if (path) {
+        path.style.animation = "draw 1.8s ease forwards";
+    }
+});
 </script>
 
 </body>
